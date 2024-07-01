@@ -1,4 +1,5 @@
 const express = require("express");
+require("dotenv").config()
 const mongoose = require("mongoose");
 const zod = require("zod");
 const {Todo} = require("./db/index")
@@ -62,7 +63,7 @@ app.use((err,req,res,next)=> {
 
 
 async function startServer() {
-   mongoose.connect("mongodb+srv://padfoot:padfoot@session.mo45vqi.mongodb.net/todoApp")
+   mongoose.connect(process.env.MONGO_URL)
     .then((val)=> {
         console.log("Connected to db");
 
