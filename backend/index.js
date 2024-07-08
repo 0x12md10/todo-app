@@ -1,14 +1,22 @@
 const express = require("express");
+require("dotenv").config()
 const mongoose = require("mongoose");
 const zod = require("zod");
-const {Todo} = require("./db/index")
+const {Todo} = require("./db/index");
+const cors = require("cors");
 const PORT = 3000;
 
 
 const app = express();
 
-app.use(express.json())
+app.use(cors());
+app.use(express.json());
 
+app.use((req,res,next)=> {
+
+    console.log("path: " + req.url + " method: " + req.method);
+    next()
+})
 
 app.get("/todos" , async (req,res)=> {
     // return all todos
@@ -48,11 +56,20 @@ app.put("/todo/:id" ,async (req,res)=> {
     // update todo field (isDone)
     const TodoId = req.params.id;
     // const todo = await Todo.findOne({_id : TodoId});
+    // streak comment
 
     // const isDone = !todo.isDone;
     // const updatedTodo = await Todo.updateOne({_id : TodoId},{isDone},{new : true});
     const result = await Todo.findTodoByIdAndToggle(TodoId);
     return res.status(200).json({msg : "ok" , result})
+})
+
+app.delete("/todo/d/:id" , async (req,res)=> {
+    
+    const todoId = req.params.id;
+
+    const result = await Todo.findByIdAndDelete({_id : todoId});
+    res.status(201).json({msg : "deletion done" , result});
 })
 
 app.use((err,req,res,next)=> {
@@ -62,7 +79,7 @@ app.use((err,req,res,next)=> {
 
 
 async function startServer() {
-   mongoose.connect("mongodb+srv://padfoot:padfoot@session.mo45vqi.mongodb.net/todoApp")
+   mongoose.connect(process.env.MONGO_URL)
     .then((val)=> {
         console.log("Connected to db");
 

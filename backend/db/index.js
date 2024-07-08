@@ -30,10 +30,10 @@ const todosSchema = new mongoose.Schema({
 });
 
 
-todosSchema.statics.findTodoByIdAndToggle = async (id) => {
-    const todo = await this.find({_id : id});
+todosSchema.statics.findTodoByIdAndToggle =  async (id) => {
+    const todo = await Todo.findOne({_id : id});
     todo.isDone = !todo.isDone;
-    await todo.save()
+     await todo.save()
     return {msg : "done"};
 }
 
