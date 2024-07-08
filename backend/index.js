@@ -56,6 +56,7 @@ app.put("/todo/:id" ,async (req,res)=> {
     // update todo field (isDone)
     const TodoId = req.params.id;
     // const todo = await Todo.findOne({_id : TodoId});
+    // streak comment
 
     // const isDone = !todo.isDone;
     // const updatedTodo = await Todo.updateOne({_id : TodoId},{isDone},{new : true});

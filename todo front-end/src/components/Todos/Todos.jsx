@@ -1,30 +1,17 @@
 
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect } from "react";
+
 import Todo from "../Todo/Todo"
 
-function Todos() {
-
-    const [todos, setTodos]=useState([]);
-    const [loading , setLoading] = useState(false);
+function Todos({todos,loading, fetchTodos}) {
 
 
-    useEffect(()=> {
 
-        async function  fetchTodos() {
-            setLoading(loading => !loading)
 
-            const todos =await axios.get("http://localhost:3000/todos");
-            console.log(todos.data.todos)
-            setTodos(todos.data.todos);
-            setLoading(loading => !loading)
-        }
-        fetchTodos()
-    
-    },[])
+ 
 
     return (
-        <div>
+        <div className="todos-container">
             {
                 (loading && !todos) && <p>Loading...</p>
             }

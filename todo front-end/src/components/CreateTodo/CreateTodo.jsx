@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react"
 
-function CreateTodo() {
+function CreateTodo({fetchTodos}) {
 
     const [todo , setTodo] = useState({
         title : "",
@@ -21,26 +21,33 @@ function CreateTodo() {
     }
 
     async function onClickHandler() {
-        const newTodo = await axios.post("http://localhost:3000/todo",
+        await axios.post("http://localhost:3000/todo",
                                         {
                                             title : todo.title,
                                             description : todo.description
                                         }
                                         )
+        fetchTodos()
+        setTodo({
+            title : "",
+            description : ""
+        })
     }
 
   return (
+    <div className="todo-form">
+    <h2>Create a new todo: </h2>
+    <form >
     <div>
-        <h2>Create a new todo: </h2>
-        <div>
             <label htmlFor="title">Title </label><br /><br />
-            <input onChange={(e)=> onChangeHandler(e)} type="text" name="title" placeholder="Title"  value = {todo.title}/>
+            <input onChange={(e)=> onChangeHandler(e)} type="text" required name="title" placeholder="Title"  value = {todo.title}/>
         </div>
         <div>
             <label htmlFor="description">description </label><br /><br />
-            <textarea onChange={(e)=> onChangeHandler(e)} name="description" id="description" placeholder="description" value={todo.description}></textarea>
+            <textarea onChange={(e)=> onChangeHandler(e)} name="description" required id="description" placeholder="description" value={todo.description}></textarea>
         </div>
         <button onClick={onClickHandler} >Create</button>
+    </form>
     </div>
   )
 }
