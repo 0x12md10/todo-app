@@ -1,0 +1,49 @@
+.todo-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid white;
+    margin-bottom: 10px;
+    padding: 5px 10px 5px 10px;
+}
+
+.todo-item--title {
+    font-weight: lighter;
+    color: white;
+}
+
+.todo-item--icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+    
+
+}
+
+.todo-item--icon---delete {
+    margin-right: 15px;
+    border: 1px solid #F22E3F;
+    background-color: #F22E3F;
+    padding: 3px 3px 2px 3px;
+}
+
+.todo-item--icon---finished {
+    margin-right: 15px;
+    border: 1px solid #3DC569;
+    background-color: #3DC569;
+    padding: 3px 3px 2px 3px;
+
+}
+/* #10b1fe
+#3fc56b
+#ce9887
+#f9c859
+#ff78f8
+#9f7efe
+#3691ff
+#ff936a
+#ff6480
+#7a82da */

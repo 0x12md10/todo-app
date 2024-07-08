@@ -20,7 +20,7 @@ function Todos({todos,loading, fetchTodos}) {
             }
             {
                todos && todos.map((todo,index)=> {
-                    return <Todo key={index} todo={todo} />
+                    return <Todo key={index} todo={todo} index={index} />
                 })
             }
         </div>

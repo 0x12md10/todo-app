@@ -1,10 +1,31 @@
+import "./Todo.css";
+import { RiDeleteBin6Fill } from "react-icons/ri";
+import { MdDone } from "react-icons/md";
 
+function Todo({todo,index}) {
 
-function Todo({todo}) {
+  // assign random color to Todo
+  const colors = ["#10b1fe" , "#ce9887","#f9c859" , "#ff78f8","#9f7efe","#3691ff" , "#ff936a", "#7a82da"];
+
+  function assignColor() {
+    let availableColors = colors.length;
+    let currentColor = index % availableColors;
+    return {"backgroundColor" : colors[currentColor]};
+
+  }
+
   return (
-    <div>
-            <h1>{todo.title}</h1>
-            <p>{todo.description}</p>
+    <div style={assignColor()} className="todo-item">
+            <h1 className="todo-item--title">{todo.title}</h1>
+       
+            <div className="todo-item--icon">
+              <div className="todo-item--icon---finished"><MdDone /></div>
+              <div className="todo-item--icon---delete"><RiDeleteBin6Fill /></div>
+
+            
+
+            </div>
+
     </div>
   )
 }
