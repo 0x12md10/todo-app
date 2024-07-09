@@ -20,7 +20,7 @@ function CreateTodo({fetchTodos}) {
 
     function buttonBehaviour(){  //set btn to red and green based on input
         if(todo.title.length === 0 || todo.description.length === 0) {
-            setBtnStyle("btn danger-btn");
+            setBtnStyle("btn  danger-btn");
         } else {
             setBtnStyle("btn submit-btn");
         }
@@ -40,9 +40,11 @@ function CreateTodo({fetchTodos}) {
     }
 
     // submit to db handler
-    async function onClickHandler() { 
-
+    async function onClickHandler(e) { 
+        e.preventDefault();
         if(todo.title.length !== 0 || todo.description.length !== 0) { // input validator
+            setBtnStyle("btn  submit-btn submit-btn-animate");
+            setTimeout(()=>setBtnStyle("btn  submit-btn") , 1000);
             await axios.post("http://localhost:3000/todo",
                 {
                     title : todo.title,
@@ -55,22 +57,24 @@ function CreateTodo({fetchTodos}) {
             description : ""
             })
         } else {
-            console.log("no input found")
+            setBtnStyle("btn  danger-btn danger-btn-animate");
+            setTimeout(()=>setBtnStyle("btn  danger-btn") , 1000);
+            console.log("no input found");
         }
     }
 
 
   return (
-    <div className={isFirstRender ? "bounce-in-bottom todo-form" : "todo-form"}> {/* apply animation on mount */}
+    <div className={isFirstRender ? "slide-in-bck-center todo-form" : "todo-form"}> {/* apply animation on mount */}
         <h2 className="form-header">Create a new todo</h2>
         <form >
             <div className="title">
-                <input onChange={(e)=> onChangeHandler(e)} type="text" required name="title" placeholder="Title"  value = {todo.title}/>
+                <input onChange={(e)=> onChangeHandler(e)} type="text" required  maxLength={50} name="title" placeholder="Title"  value = {todo.title}/>
             </div>
             <div className="description">
-                <textarea onChange={(e)=> onChangeHandler(e)} name="description" required id="description" placeholder="description" value={todo.description}></textarea>
+                <textarea onChange={(e)=> onChangeHandler(e)} name="description" required  maxLength={200} id="description" placeholder="description" value={todo.description}></textarea>
             </div>
-            <button className={btnStyle} onClick={onClickHandler} >Create</button>
+            <button className={btnStyle} onClick={(e)=>onClickHandler(e)} >Create</button>
         </form>
     </div>
   )
