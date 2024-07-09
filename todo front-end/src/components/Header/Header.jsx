@@ -13,7 +13,7 @@ const Header = memo(() => { //memoize the header component since it's static
   },[])
 
   return (
-    <div className={`header ${isFirstRender ? "tracking-in-contract-bck shadow-drop-center" : "" }`}> // Title animate only on mount.
+    <div className={`header ${isFirstRender ? "tracking-in-contract-bck shadow-drop-center" : "" }`}> {/* Title animate only on mount.*/}
         Todo App
     </div>
   )

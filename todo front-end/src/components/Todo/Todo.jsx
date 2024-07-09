@@ -15,7 +15,7 @@ function Todo({todo,index}) {
   }
 
   return (
-    <div style={assignColor()} className="todo-item"> // assign different color 
+    <div style={assignColor()} className="todo-item">{ /* assign different color */}
       <h1 className="todo-item--title">{todo.title}</h1>
       <div className="todo-item--icon">
         <div className="todo-item--icon---finished"><MdDone /></div>

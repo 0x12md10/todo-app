@@ -61,7 +61,7 @@ function CreateTodo({fetchTodos}) {
 
 
   return (
-    <div className={isFirstRender ? "bounce-in-bottom todo-form" : "todo-form"}> //apply animation on mount
+    <div className={isFirstRender ? "bounce-in-bottom todo-form" : "todo-form"}> {/* apply animation on mount */}
         <h2 className="form-header">Create a new todo</h2>
         <form >
             <div className="title">

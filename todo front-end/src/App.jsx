@@ -31,12 +31,12 @@ function App() {
 
 
   return (
-    <div className='body-wrapper'> //app wrapper
+    <div className='body-wrapper'> {/* app wrapper */}
       <Header />
       <div className='main'>
-        <CreateTodo fetchTodos={fetchTodos} /> //form
-        <div className='separator'></div> //separator line
-        <Todos todos = {todos} loading={loading}  fetchTodos={fetchTodos} /> //list todos
+        <CreateTodo fetchTodos={fetchTodos} /> {/* form*/}
+        <div className='separator'></div> {/*separator line*/}
+        <Todos todos = {todos} loading={loading}  fetchTodos={fetchTodos} /> {/* list todos*/}
       </div>
     </div>
   )
