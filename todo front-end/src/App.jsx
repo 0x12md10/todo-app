@@ -1,16 +1,19 @@
 import './App.css'
-import CreateTodo from './components/CreateTodo/CreateTodo'
-import Todos from './components/Todos/Todos'
-import { useEffect, useState } from 'react';
 import axios from "axios";
+import { useEffect, useState } from 'react';
+import Todos from './components/Todos/Todos';
 import Header from './components/Header/Header';
+import CreateTodo from './components/CreateTodo/CreateTodo'
+
 
 function App() {
 
-  const [todos, setTodos]=useState([]);
-  const [loading , setLoading] = useState(false);
+  const [todos, setTodos]=useState([]); // all todos 
+  const [loading , setLoading] = useState(false); // loading state while fetching todos
 
-  async function  fetchTodos() {
+
+
+  async function  fetchTodos() { //fetch all todos
     setLoading(loading => !loading)
 
     const todos =await axios.get("http://localhost:3000/todos");
@@ -19,7 +22,7 @@ function App() {
 }
 
 
-
+// fetch on intial mount
   useEffect(()=> {
 
     fetchTodos()
@@ -28,14 +31,12 @@ function App() {
 
 
   return (
-    <div className='body-wrapper'>
-
+    <div className='body-wrapper'> //app wrapper
       <Header />
-
       <div className='main'>
-      <CreateTodo fetchTodos={fetchTodos} />
-      <div className='separator'></div>
-      <Todos todos = {todos} loading={loading}  fetchTodos={fetchTodos} />
+        <CreateTodo fetchTodos={fetchTodos} /> //form
+        <div className='separator'></div> //separator line
+        <Todos todos = {todos} loading={loading}  fetchTodos={fetchTodos} /> //list todos
       </div>
     </div>
   )

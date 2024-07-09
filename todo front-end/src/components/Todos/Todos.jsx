@@ -1,15 +1,10 @@
-
-import { useEffect } from "react";
-
 import Todo from "../Todo/Todo"
 
 function Todos({todos,loading, fetchTodos}) {
 
-
-
-
- 
-
+    // when no todos and loading show loading
+    // when not loading and no todos show "No todos found"
+    
     return (
         <div className="todos-container">
             {

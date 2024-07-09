@@ -29,6 +29,7 @@ const todosSchema = new mongoose.Schema({
     }
 });
 
+// find todo by Id and toggle the completed(boolean) value.
 
 todosSchema.statics.findTodoByIdAndToggle =  async (id) => {
     const todo = await Todo.findOne({_id : id});
@@ -36,6 +37,7 @@ todosSchema.statics.findTodoByIdAndToggle =  async (id) => {
      await todo.save()
     return {msg : "done"};
 }
+
 
 const Todo = mongoose.model("Todo" , todosSchema);
 

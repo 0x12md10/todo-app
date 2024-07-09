@@ -1,22 +1,27 @@
-const express = require("express");
-require("dotenv").config()
-const mongoose = require("mongoose");
-const zod = require("zod");
-const {Todo} = require("./db/index");
-const cors = require("cors");
+// require all modules
 const PORT = 3000;
+require("dotenv").config();
+const zod = require("zod");
+const cors = require("cors");
+const express = require("express");
+const mongoose = require("mongoose");
+const {Todo} = require("./db/index");
 
 
 const app = express();
 
-app.use(cors());
-app.use(express.json());
 
-app.use((req,res,next)=> {
+// Initialize the middlewares
+app.use(cors()); // cors
+app.use(express.json()); // body parser
+app.use((req,res,next)=> { // logger middleware
 
     console.log("path: " + req.url + " method: " + req.method);
     next()
 })
+
+
+// Route handlers
 
 app.get("/todos" , async (req,res)=> {
     // return all todos
@@ -64,7 +69,8 @@ app.put("/todo/:id" ,async (req,res)=> {
     return res.status(200).json({msg : "ok" , result})
 })
 
-app.delete("/todo/d/:id" , async (req,res)=> {
+
+app.delete("/todo/d/:id" , async (req,res)=> { // delete todo by id
     
     const todoId = req.params.id;
 
@@ -72,12 +78,14 @@ app.delete("/todo/d/:id" , async (req,res)=> {
     res.status(201).json({msg : "deletion done" , result});
 })
 
+
+// Error handling middleware
 app.use((err,req,res,next)=> {
     console.log(err);
     res.status(400).json({err : err})
 })
 
-
+// connect to db and spin up the server
 async function startServer() {
    mongoose.connect(process.env.MONGO_URL)
     .then((val)=> {

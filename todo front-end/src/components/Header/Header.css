@@ -1,4 +1,4 @@
-/* Test slide animation from Animista */
+/* title slide animation from Animista */
 
 .tracking-in-contract-bck {
 	-webkit-animation: tracking-in-contract-bck 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
@@ -40,7 +40,7 @@
   }
   
 
-  /* Shadow drop animation from animista */
+  /* Shadow drop animation for header from animista */
 
   .shadow-drop-bottom {
 	-webkit-animation: shadow-drop-bottom 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;

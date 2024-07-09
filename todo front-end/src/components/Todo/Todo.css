@@ -1,3 +1,4 @@
+/* selector names uses BEM methodology */
 .todo-item {
     display: flex;
     flex-direction: row;
@@ -37,6 +38,9 @@
     padding: 3px 3px 2px 3px;
 
 }
+
+/* Colors for Todo items inspired from Bluloco Dark Theme. */
+
 /* #10b1fe
 #3fc56b
 #ce9887
