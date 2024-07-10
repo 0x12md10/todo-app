@@ -33,7 +33,7 @@ function Todo({todo,index,fetchTodos,modalIsOpen,setModalIsOpen}) {
   function assignColor() { 
     let availableColors = colors.length;
     let currentColor = index % availableColors;
-    return {"backgroundColor" : colors[currentColor]};
+    return {"color" : colors[currentColor]};
 
   }
 
@@ -55,8 +55,8 @@ function Todo({todo,index,fetchTodos,modalIsOpen,setModalIsOpen}) {
 
   return (
 <>
-<div style={assignColor()} className={currentlyDeleting === todo._id ? "todo-item bounce-out-right" : "todo-item"}>{ /* assign different color */}
-      <h1 className={todo.isDone ? "todo-item--title strike-title" : "todo-item--title"}>{todo.title}</h1>
+<div  className={currentlyDeleting === todo._id ? "todo-item bounce-out-right" : "todo-item"}>{ /* assign different color */}
+      <h1 style={assignColor()} className={todo.isDone ? "todo-item--title strike-title" : "todo-item--title"}>{todo.title}</h1>
       <div className="todo-item--icon">
         <div onClick={(e,currentTodoRef)=>openModal(currentTodoRef)} className="todo-item--icon---info"><IoInformationCircle /></div>
         <div onClick={(e)=>markAsComplete(e)} className="todo-item--icon---finished">{todo.isDone ? <FaUndo />:<MdDone /> }</div>
