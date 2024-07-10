@@ -15,7 +15,7 @@ function CreateTodo({fetchTodos}) {
     useEffect(()=> { //Pop in animation only on first render 
         setTimeout(()=> { // give some time to let the animation finish fully.
             setIsFirstRender(false);
-        },3000)
+        },1000)
     },[])
 
     function buttonBehaviour(){  //set btn to red and green based on input
