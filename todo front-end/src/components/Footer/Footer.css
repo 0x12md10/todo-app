@@ -1,0 +1,29 @@
+.footer {
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    width: 90vw;
+    border-top: 1px solid black;
+    padding: 30px 30px;
+
+
+}
+
+.footer-text {
+    font-size: 1.05rem;
+}
+
+.social {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.social-icon {
+    margin-right: 20px;
+    font-size: 1.5rem;
+
+}

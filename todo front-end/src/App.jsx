@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Todos from './components/Todos/Todos';
 import Header from './components/Header/Header';
 import CreateTodo from './components/CreateTodo/CreateTodo'
+import Footer from './components/Footer/Footer';
 
 
 function App() {
@@ -42,7 +43,7 @@ function App() {
         <div className='separator'></div> {/*separator line*/}
         <Todos todos = {todos} loading={loading}  fetchTodos={fetchTodos} modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen}/> {/* list todos*/}
       </div>
-     
+      <Footer/>
 </div>
 
 
